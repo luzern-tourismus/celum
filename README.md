@@ -7,3 +7,7 @@ sudo curl -s https://raw.githubusercontent.com/luzern-tourismus/celum/refs/heads
 ```
 
 
+## Deployment
+```
+sudo git clone https://github.com/luzern-tourismus/celum.git .
+```
