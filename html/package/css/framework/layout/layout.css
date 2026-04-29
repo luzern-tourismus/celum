@@ -1,0 +1,167 @@
+@import "space.css";
+
+.admin-block {
+
+    display: block;
+
+}
+
+
+.admin-main-content {
+
+    margin: var(--default-space);
+    padding: var(--default-space);
+
+}
+
+
+.admin-width-500 {
+    width: 500px;
+}
+
+
+.admin-search-form {
+
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-bottom: var(--default-space);
+
+}
+
+
+.admin-search-form select {
+
+    width: auto;
+
+}
+
+
+
+.admin-flex-row {
+
+    display: flex;
+    flex-direction: row;
+    gap: var(--default-gap-space);
+
+}
+
+
+.admin-body {
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.admin-footer {
+
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    margin-top: auto;
+
+}
+
+
+.admin-layout-grid {
+
+
+}
+
+.admin-default-layout {
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-space);
+
+}
+
+
+.admin-two-column-grid-layout {
+
+    display: grid;
+    gap: var(--default-gap-space);
+
+}
+
+
+.admin-grid-layout {
+
+    display: grid;
+    gap: var(--default-gap-space);
+
+}
+
+
+
+.admin-row-flexbox-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--default-gap-space);
+
+}
+
+
+.admin-column-flexbox-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-gap-space);
+
+}
+
+
+.admin-row-flex-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--default-gap-space);
+
+}
+
+
+.admin-column-flex-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-gap-space);
+}
+
+
+@media screen and (max-width: 1000px) {
+
+}
+
+
+@media screen and (min-width: 1000px) {
+
+    .admin-two-column-grid-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--default-gap-space);
+    }
+
+
+    .admin-fix-center-layout {
+
+        position: fixed;
+
+        /**height: 100%; --> Problem mit Footer*/
+
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+}
+
+
+.admin-hr {
+    border: none;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-light);
+}

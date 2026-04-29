@@ -1,0 +1,20 @@
+.admin-space {
+
+    padding: var(--default-space);
+
+}
+
+
+.admin-space-left {
+
+    padding-left: var(--default-space);
+
+}
+
+
+
+.admin-space-bottom {
+
+    padding-bottom: var(--default-space);
+
+}

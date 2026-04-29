@@ -1,0 +1,23 @@
+@import "select.css";
+@import "textbox.css";
+@import "input.css";
+@import "textarea.css";
+@import "file_upload.css";
+
+
+.admin-form {
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-space);
+
+}
+
+
+
+.admin-form-error {
+
+    font-weight: bold;
+    color: var(--color-error);
+
+}

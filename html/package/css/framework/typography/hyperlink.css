@@ -1,0 +1,12 @@
+.admin-hyperlink {
+    color: var(--color-font);
+    text-decoration: underline;
+    display: block;
+}
+
+
+
+.admin-hyperlink-reset {
+    text-decoration: none;
+}
+

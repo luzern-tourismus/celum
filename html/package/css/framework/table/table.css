@@ -1,0 +1,68 @@
+.admin-table {
+
+    --default-table-space: 5px;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+
+.admin-table thead th {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    padding: var(--default-table-space);
+    /*text-align: left;*/
+}
+
+
+.admin-table thead th a {
+    color: var(--color-dark);
+    text-decoration: none;
+}
+
+
+.admin-table td {
+
+    padding: var(--default-table-space);
+
+
+}
+
+
+.admin-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+.admin-table td a {
+    text-decoration: none;
+}
+
+
+.admin-table tr {
+
+    border-bottom: 1px solid;
+    border-color: var(--color-dark);
+
+}
+
+
+.admin-table-row-strike-through {
+
+    text-decoration: line-through;
+
+}
+
+
+.admin-table-cell-label {
+    vertical-align: top;
+}
+
+
+.admin-text-left {
+    text-align: left;
+}
+
+.admin-text-right {
+    text-align: right;
+}
