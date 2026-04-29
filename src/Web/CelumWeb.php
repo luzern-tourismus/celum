@@ -1,13 +1,26 @@
 <?php
-namespace Celum\Web;
-use Nemundo\Web\Base\AbstractWeb;
-use Nemundo\User\Login\CookieLogin;
+
+namespace LuzernTourismus\Celum\Web;
+
+use LuzernTourismus\Celum\Controller\CelumController;
 use Nemundo\Admin\AdminConfig;
-class CelumWeb extends AbstractWeb {
-public function loadWeb() {
-(new CookieLogin())->checkLogin();
-AdminConfig::$defaultTemplateClassName = DefaultContentTemplate::class;
-AdminConfig::$webController = new ...Controller();
-AdminConfig::$webController->render();
-}
+use Nemundo\Admin\Template\AdminTemplate;
+use Nemundo\Admin\Template\NavbarAdminTemplate;
+use Nemundo\User\Login\CookieLogin;
+use Nemundo\Web\Base\AbstractWeb;
+
+class CelumWeb extends AbstractWeb
+{
+    public function loadWeb()
+    {
+        (new CookieLogin())->checkLogin();
+        //AdminConfig::$defaultTemplateClassName = NavbarAdminTemplate::class;
+
+        //AdminConfig::$documentTitle = '';
+        /*AdminConfig::$logoUrl = '/img/logo_luzern.svg';
+        AdminConfig::$logoText = ;*/
+
+        AdminConfig::$webController = new CelumController();
+        AdminConfig::$webController->render();
+    }
 }

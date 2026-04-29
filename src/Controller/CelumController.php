@@ -1,7 +1,20 @@
 <?php
-namespace Celum\Controller;
+
+namespace LuzernTourismus\Celum\Controller;
+
+use LuzernTourismus\Celum\Site\HomeSite;
+use Nemundo\App\Application\Site\AppSite;
+use Nemundo\App\UserAction\Site\UserActionSite;
 use Nemundo\Web\Controller\AbstractWebController;
-class CelumController extends AbstractWebController {
-protected function loadController() {
-}
+
+class CelumController extends AbstractWebController
+{
+    protected function loadController()
+    {
+
+        new HomeSite($this);
+        new AppSite($this);
+        new UserActionSite($this);
+
+    }
 }

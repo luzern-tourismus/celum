@@ -1,3 +1,3 @@
 <?php
 require "../config.php";
-(new \Celum\Web\CelumWeb())->loadWeb();
+(new \LuzernTourismus\Celum\Web\CelumWeb())->loadWeb();
