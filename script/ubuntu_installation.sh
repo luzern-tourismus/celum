@@ -20,3 +20,7 @@ sudo a2enmod php
 sudo systemctl restart apache2
 
 sudo apt install -y composer
+
+
+sudo apt install -y certbot python3-certbot-apache
+

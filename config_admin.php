@@ -1,1 +1,1 @@
-<?phprequire __DIR__ . "/config.php";//(new \Nemundo\App\ModelDesigner\ModelDesignerConfig())->addProject();
+<?phprequire __DIR__ . "/config.php";(new \Nemundo\App\ModelDesigner\ModelDesignerConfig())    ->addProject(new \LuzernTourismus\Celum\CelumProject());

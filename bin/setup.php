@@ -1,3 +1,5 @@
 <?php
 require  "config.php";
-(new \Celum\Setup\CelumSetup())->run();
+
+(new \LuzernTourismus\Celum\Setup\CelumSetup())->run();
+

@@ -1,7 +1,3 @@
 <?php
-
-require_once "../config.php";
-
-echo "hello world";
-
-?>
+require "../config.php";
+(new \Celum\Web\CelumWeb())->loadWeb();
