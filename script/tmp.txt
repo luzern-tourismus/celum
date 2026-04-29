@@ -1,7 +1,9 @@
 
+sudoedit /etc/php/8.3/cli/php.ini
 
 
 
+bcmath,bz2,curl,gd,gmp,intl,mbstring,opcache,readline,xml,zip
 
 apt install php7.0-mysql
 apt install php7.0-xml

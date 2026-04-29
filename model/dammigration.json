@@ -1,0 +1,353 @@
+{
+    "app": "Celum",
+    "name": "celum",
+    "namespace": "LuzernTourismus\\Celum",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "fc4a55d6-1f9e-4501-a544-ed71a509e118",
+            "label": "Asset",
+            "class_name": "Asset",
+            "table_name": "celum_asset",
+            "namespace": "LuzernTourismus\\Celum\\Data\\Asset",
+            "row_class_name": "",
+            "primary_index": "number_id",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Name",
+                    "field_name": "name",
+                    "variable_name": "name",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "text",
+                    "label": "Preview Url",
+                    "field_name": "preview_url",
+                    "variable_name": "previewUrl",
+                    "allow_null": false,
+                    "is_deleted": true,
+                    "length": "255"
+                },
+                {
+                    "type": "large_text",
+                    "label": "Preview Url",
+                    "field_name": "preview_url",
+                    "variable_name": "previewUrl",
+                    "allow_null": false,
+                    "is_deleted": false
+                },
+                {
+                    "type": "text",
+                    "label": "File Extension",
+                    "field_name": "file_extension",
+                    "variable_name": "fileExtension",
+                    "allow_null": false,
+                    "is_deleted": true,
+                    "length": "5"
+                },
+                {
+                    "type": "text",
+                    "label": "Filename",
+                    "field_name": "filename",
+                    "variable_name": "filename",
+                    "allow_null": false,
+                    "is_deleted": true,
+                    "length": "255"
+                },
+                {
+                    "type": "large_text",
+                    "label": "Description",
+                    "field_name": "description",
+                    "variable_name": "description",
+                    "allow_null": true,
+                    "is_deleted": false
+                },
+                {
+                    "type": "external",
+                    "label": "File Extension",
+                    "field_name": "file_extension",
+                    "variable_name": "fileExtension",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "2b62d2a3-6f2b-40ec-807f-ab7b95b16a03"
+                },
+                {
+                    "type": "yes_no",
+                    "label": "Has Preview Url",
+                    "field_name": "has_preview_url",
+                    "variable_name": "hasPreviewUrl",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "name",
+                    "index_type": "search_index",
+                    "field_name": [
+                        "name"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "5424cdaf-57ab-4b4a-b162-da8eaabea068",
+            "label": "Asset Collection",
+            "class_name": "AssetCollection",
+            "table_name": "celum_asset_collection",
+            "namespace": "LuzernTourismus\\Celum\\Data\\AssetCollection",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Asset",
+                    "field_name": "asset",
+                    "variable_name": "asset",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "fc4a55d6-1f9e-4501-a544-ed71a509e118"
+                },
+                {
+                    "type": "external",
+                    "label": "Collection",
+                    "field_name": "collection",
+                    "variable_name": "collection",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "eeb2e76d-4da4-4760-b6d9-e25a06cd2184"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "asset",
+                    "index_type": "index",
+                    "field_name": [
+                        "asset"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "cc86c66b-ad6f-46ed-bdbd-2b0d2e0b997c",
+            "label": "Asset Collection Path",
+            "class_name": "AssetCollectionPath",
+            "table_name": "celum_asset_collection_path",
+            "namespace": "LuzernTourismus\\Celum\\Data\\AssetCollectionPath",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Collection Type",
+                    "field_name": "collection_type",
+                    "variable_name": "collectionType",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "1315e1c5-1901-4365-87bc-3859decc8245"
+                },
+                {
+                    "type": "external",
+                    "label": "Asset",
+                    "field_name": "asset",
+                    "variable_name": "asset",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "fc4a55d6-1f9e-4501-a544-ed71a509e118"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "asset",
+                    "index_type": "index",
+                    "field_name": [
+                        "asset"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "29fbcd39-18a6-4400-b2fe-e0ee9b0a7802",
+            "label": "Asset Collection Path Segment",
+            "class_name": "AssetCollectionPathSegment",
+            "table_name": "celum_asset_collection_path_segment",
+            "namespace": "LuzernTourismus\\Celum\\Data\\AssetCollectionPathSegment",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Asset Collection Path",
+                    "field_name": "asset_collection_path",
+                    "variable_name": "assetCollectionPath",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "cc86c66b-ad6f-46ed-bdbd-2b0d2e0b997c"
+                },
+                {
+                    "type": "external",
+                    "label": "Collection",
+                    "field_name": "collection",
+                    "variable_name": "collection",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "eeb2e76d-4da4-4760-b6d9-e25a06cd2184"
+                },
+                {
+                    "type": "number",
+                    "label": "Item Order",
+                    "field_name": "item_order",
+                    "variable_name": "itemOrder",
+                    "allow_null": false,
+                    "is_deleted": false
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "asset_collection_path",
+                    "index_type": "index",
+                    "field_name": [
+                        "asset_collection_path"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "eeb2e76d-4da4-4760-b6d9-e25a06cd2184",
+            "label": "Collection",
+            "class_name": "Collection",
+            "table_name": "celum_collection",
+            "namespace": "LuzernTourismus\\Celum\\Data\\Collection",
+            "row_class_name": "",
+            "primary_index": "number_id",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Collection",
+                    "field_name": "collection",
+                    "variable_name": "collection",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                },
+                {
+                    "type": "external",
+                    "label": "Collection Type",
+                    "field_name": "collection_type",
+                    "variable_name": "collectionType",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "1315e1c5-1901-4365-87bc-3859decc8245"
+                }
+            ],
+            "index": []
+        },
+        {
+            "template": "default",
+            "model_id": "1315e1c5-1901-4365-87bc-3859decc8245",
+            "label": "Collection Type",
+            "class_name": "CollectionType",
+            "table_name": "celum_collection_type",
+            "namespace": "LuzernTourismus\\Celum\\Data\\CollectionType",
+            "row_class_name": "",
+            "primary_index": "number_id",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Collection Type",
+                    "field_name": "collection_type",
+                    "variable_name": "collectionType",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": []
+        },
+        {
+            "template": "default",
+            "model_id": "2b62d2a3-6f2b-40ec-807f-ab7b95b16a03",
+            "label": "File Extension",
+            "class_name": "FileExtension",
+            "table_name": "celum_file_extension",
+            "namespace": "LuzernTourismus\\Celum\\Data\\FileExtension",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "File Extension",
+                    "field_name": "file_extension",
+                    "variable_name": "fileExtension",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "5"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "file_extension",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "file_extension"
+                    ]
+                }
+            ]
+        },
+        {
+            "template": "default",
+            "model_id": "d2ddbd9f-be63-4e5b-bfce-6c492d27098b",
+            "label": "Ort",
+            "class_name": "Ort",
+            "table_name": "celum_ort",
+            "namespace": "LuzernTourismus\\Celum\\Data\\Ort",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Ort",
+                    "field_name": "ort",
+                    "variable_name": "ort",
+                    "allow_null": false,
+                    "is_deleted": true,
+                    "length": "255"
+                },
+                {
+                    "type": "external",
+                    "label": "Ort",
+                    "field_name": "ort",
+                    "variable_name": "ort",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "eeb2e76d-4da4-4760-b6d9-e25a06cd2184"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "ort",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "ort"
+                    ]
+                }
+            ]
+        }
+    ]
+}
