@@ -12,27 +12,29 @@ use Nemundo\Core\Json\Reader\JsonReader;
 class AssetDownload extends AbstractBase
 {
 
-public function downloadAsset(AssetRow $assetRow)
-{
+    public function downloadAsset(AssetRow $assetRow)
+    {
 
-    $filename = (new CelumAssetPath())
-        ->addPath($assetRow->id . '.' . $assetRow->fileExtension->fileExtension)
-        ->getFullFilename();
+        $filename = (new CelumAssetPath())
+            ->addPath($assetRow->id . '.' . $assetRow->fileExtension->fileExtension)
+            ->getFullFilename();
 
 
-    if (!(new File($filename))->fileExists()) {
+        if (!(new File($filename))->fileExists()) {
 
-        $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetRow->id . '&downloadFormatId=1';
+            $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetRow->id . '&downloadFormatId=1';
 
-        $response = (new CelumWebRequest())->getUrl($url);
+            $response = (new CelumWebRequest())->getUrl($url);
 
-        $data = (new JsonReader())->fromText($response->html)->getData();
-        $downloadUrl = $data['url'];
+            $data = (new JsonReader())->fromText($response->html)->getData();
+            $downloadUrl = $data['url'];
 
-        (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
+            (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
+
+        }
+
+        return $filename;
 
     }
-
-}
 
 }

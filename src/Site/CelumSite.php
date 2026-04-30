@@ -17,7 +17,7 @@ class CelumSite extends AbstractSite
     protected function loadSite()
     {
         $this->title = 'Celum';
-        $this->url = 'Celum';
+        $this->url = 'celum';
         $this->restricted=true;
         $this->addRestrictedUsergroup(new CelumUsergroup());
 
