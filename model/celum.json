@@ -39,7 +39,7 @@
                     "field_name": "preview_url",
                     "variable_name": "previewUrl",
                     "allow_null": false,
-                    "is_deleted": false
+                    "is_deleted": true
                 },
                 {
                     "type": "text",
@@ -82,7 +82,7 @@
                     "field_name": "has_preview_url",
                     "variable_name": "hasPreviewUrl",
                     "allow_null": false,
-                    "is_deleted": false
+                    "is_deleted": true
                 }
             ],
             "index": [

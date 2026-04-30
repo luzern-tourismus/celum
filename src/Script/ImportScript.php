@@ -17,8 +17,6 @@ class ImportScript extends AbstractConsoleScript
     public function run()
     {
 
-        //(new TmpDeleteScript())->run();
-        //(new DamMigrationApplication())->reinstallApp();
         (new CollectionTypeImport())->importData();
         (new CollectionImport())->import();
         (new AssetImport())->import();

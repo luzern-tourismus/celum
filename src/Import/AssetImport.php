@@ -19,6 +19,11 @@ class AssetImport extends AbstractCelumImport
 {
 
     /**
+     * @var bool
+     */
+    //public $downloadAsset = false;
+
+    /**
      * @var FileExtensionDirectory
      */
     private $fileExtensionDirectory;
@@ -37,7 +42,7 @@ class AssetImport extends AbstractCelumImport
 
         $assetId = $item['id'];
 
-        $previewUrl = null;
+        /*$previewUrl = null;
         $hasPreview = false;
         if (isset($item['currentVersion']['previewUrls'])) {
             $previewUrl = $item['currentVersion']['previewUrls']['LARGE'];
@@ -47,27 +52,31 @@ class AssetImport extends AbstractCelumImport
         if (isset($item['currentVersion']['previewUrls']['VIDEO'])) {
             $previewUrl = $item['currentVersion']['previewUrls']['VIDEO'];
             $hasPreview = true;
-        }
+        }*/
 
         $fileExtension = $item['currentVersion']['fileExtension'];
 
-        $filename = (new CelumAssetPath())
-            ->addPath($assetId . '.' . $fileExtension)
-            ->getFullFilename();
+        /*if ($this->downloadAsset) {
+
+            /*$filename = (new CelumAssetPath())
+                ->addPath($assetId . '.' . $fileExtension)
+                ->getFullFilename();
 
 
-        if (!(new File($filename))->fileExists()) {
+            if (!(new File($filename))->fileExists()) {
 
-            $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetId . '&downloadFormatId=1';
+                $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetId . '&downloadFormatId=1';
 
-            $response = (new CelumWebRequest())->getUrl($url);
+                $response = (new CelumWebRequest())->getUrl($url);
 
-            $data = (new JsonReader())->fromText($response->html)->getData();
-            $downloadUrl = $data['url'];
+                $data = (new JsonReader())->fromText($response->html)->getData();
+                $downloadUrl = $data['url'];
 
-            (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
+                (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
 
-        }
+            }
+
+        }*/
 
 
         $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
@@ -123,8 +132,8 @@ class AssetImport extends AbstractCelumImport
         $data->name = $asset;
         $data->description = $description;
         $data->fileExtensionId = $this->fileExtensionDirectory->getId($fileExtension);
-        $data->hasPreviewUrl = $hasPreview;
-        $data->previewUrl = $previewUrl;
+        /*$data->hasPreviewUrl = $hasPreview;
+        $data->previewUrl = $previewUrl;*/
         $data->save();
 
         foreach ($item['parentIds'] as $parentId) {

@@ -14,11 +14,6 @@ public $name;
 /**
 * @var \Nemundo\Model\Type\Text\LargeTextType
 */
-public $previewUrl;
-
-/**
-* @var \Nemundo\Model\Type\Text\LargeTextType
-*/
 public $description;
 
 /**
@@ -30,11 +25,6 @@ public $fileExtensionId;
 * @var \LuzernTourismus\Celum\Data\FileExtension\FileExtensionExternalType
 */
 public $fileExtension;
-
-/**
-* @var \Nemundo\Model\Type\Number\YesNoType
-*/
-public $hasPreviewUrl;
 
 protected function loadExternalType() {
 parent::loadExternalType();
@@ -57,14 +47,6 @@ $this->name->aliasFieldName = $this->name->tableName . "_" . $this->name->fieldN
 $this->name->label = "Name";
 $this->addType($this->name);
 
-$this->previewUrl = new \Nemundo\Model\Type\Text\LargeTextType();
-$this->previewUrl->fieldName = "preview_url";
-$this->previewUrl->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->previewUrl->externalTableName = $this->externalTableName;
-$this->previewUrl->aliasFieldName = $this->previewUrl->tableName . "_" . $this->previewUrl->fieldName;
-$this->previewUrl->label = "Preview Url";
-$this->addType($this->previewUrl);
-
 $this->description = new \Nemundo\Model\Type\Text\LargeTextType();
 $this->description->fieldName = "description";
 $this->description->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -79,14 +61,6 @@ $this->fileExtensionId->tableName = $this->parentFieldName . "_" . $this->extern
 $this->fileExtensionId->aliasFieldName = $this->fileExtensionId->tableName ."_".$this->fileExtensionId->fieldName;
 $this->fileExtensionId->label = "File Extension";
 $this->addType($this->fileExtensionId);
-
-$this->hasPreviewUrl = new \Nemundo\Model\Type\Number\YesNoType();
-$this->hasPreviewUrl->fieldName = "has_preview_url";
-$this->hasPreviewUrl->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->hasPreviewUrl->externalTableName = $this->externalTableName;
-$this->hasPreviewUrl->aliasFieldName = $this->hasPreviewUrl->tableName . "_" . $this->hasPreviewUrl->fieldName;
-$this->hasPreviewUrl->label = "Has Preview Url";
-$this->addType($this->hasPreviewUrl);
 
 }
 public function loadFileExtension() {

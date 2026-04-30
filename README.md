@@ -46,3 +46,18 @@ celum_password=
 ```
 
 
+### Import Asset
+```
+sudo nohup php /var/www/bin/cmd.php celum-asset-import &
+```
+
+```
+ps aux
+```
+
+```
+du -sh /var/www/celum_asset
+```
+
+
+

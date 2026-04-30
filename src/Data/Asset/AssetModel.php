@@ -14,11 +14,6 @@ public $name;
 /**
 * @var \Nemundo\Model\Type\Text\LargeTextType
 */
-public $previewUrl;
-
-/**
-* @var \Nemundo\Model\Type\Text\LargeTextType
-*/
 public $description;
 
 /**
@@ -30,11 +25,6 @@ public $fileExtensionId;
 * @var \LuzernTourismus\Celum\Data\FileExtension\FileExtensionExternalType
 */
 public $fileExtension;
-
-/**
-* @var \Nemundo\Model\Type\Number\YesNoType
-*/
-public $hasPreviewUrl;
 
 protected function loadModel() {
 $this->tableName = "celum_asset";
@@ -60,14 +50,6 @@ $this->name->label = "Name";
 $this->name->allowNullValue = false;
 $this->name->length = 255;
 
-$this->previewUrl = new \Nemundo\Model\Type\Text\LargeTextType($this);
-$this->previewUrl->tableName = "celum_asset";
-$this->previewUrl->externalTableName = "celum_asset";
-$this->previewUrl->fieldName = "preview_url";
-$this->previewUrl->aliasFieldName = "celum_asset_preview_url";
-$this->previewUrl->label = "Preview Url";
-$this->previewUrl->allowNullValue = false;
-
 $this->description = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->description->tableName = "celum_asset";
 $this->description->externalTableName = "celum_asset";
@@ -82,14 +64,6 @@ $this->fileExtensionId->fieldName = "file_extension";
 $this->fileExtensionId->aliasFieldName = "celum_asset_file_extension";
 $this->fileExtensionId->label = "File Extension";
 $this->fileExtensionId->allowNullValue = false;
-
-$this->hasPreviewUrl = new \Nemundo\Model\Type\Number\YesNoType($this);
-$this->hasPreviewUrl->tableName = "celum_asset";
-$this->hasPreviewUrl->externalTableName = "celum_asset";
-$this->hasPreviewUrl->fieldName = "has_preview_url";
-$this->hasPreviewUrl->aliasFieldName = "celum_asset_has_preview_url";
-$this->hasPreviewUrl->label = "Has Preview Url";
-$this->hasPreviewUrl->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelSearchIndex($this);
 $index->indexName = "name";
