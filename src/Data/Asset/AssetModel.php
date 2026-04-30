@@ -26,6 +26,16 @@ public $fileExtensionId;
 */
 public $fileExtension;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $caption;
+
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $creator;
+
 protected function loadModel() {
 $this->tableName = "celum_asset";
 $this->aliasTableName = "celum_asset";
@@ -64,6 +74,22 @@ $this->fileExtensionId->fieldName = "file_extension";
 $this->fileExtensionId->aliasFieldName = "celum_asset_file_extension";
 $this->fileExtensionId->label = "File Extension";
 $this->fileExtensionId->allowNullValue = false;
+
+$this->caption = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->caption->tableName = "celum_asset";
+$this->caption->externalTableName = "celum_asset";
+$this->caption->fieldName = "caption";
+$this->caption->aliasFieldName = "celum_asset_caption";
+$this->caption->label = "Caption";
+$this->caption->allowNullValue = true;
+
+$this->creator = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->creator->tableName = "celum_asset";
+$this->creator->externalTableName = "celum_asset";
+$this->creator->fieldName = "creator";
+$this->creator->aliasFieldName = "celum_asset_creator";
+$this->creator->label = "Creator";
+$this->creator->allowNullValue = true;
 
 $index = new \Nemundo\Model\Definition\Index\ModelSearchIndex($this);
 $index->indexName = "name";

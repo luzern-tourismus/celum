@@ -26,6 +26,16 @@ public $fileExtensionId;
 */
 public $fileExtension;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $caption;
+
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $creator;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = AssetModel::class;
@@ -61,6 +71,22 @@ $this->fileExtensionId->tableName = $this->parentFieldName . "_" . $this->extern
 $this->fileExtensionId->aliasFieldName = $this->fileExtensionId->tableName ."_".$this->fileExtensionId->fieldName;
 $this->fileExtensionId->label = "File Extension";
 $this->addType($this->fileExtensionId);
+
+$this->caption = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->caption->fieldName = "caption";
+$this->caption->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->caption->externalTableName = $this->externalTableName;
+$this->caption->aliasFieldName = $this->caption->tableName . "_" . $this->caption->fieldName;
+$this->caption->label = "Caption";
+$this->addType($this->caption);
+
+$this->creator = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->creator->fieldName = "creator";
+$this->creator->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->creator->externalTableName = $this->externalTableName;
+$this->creator->aliasFieldName = $this->creator->tableName . "_" . $this->creator->fieldName;
+$this->creator->label = "Creator";
+$this->addType($this->creator);
 
 }
 public function loadFileExtension() {

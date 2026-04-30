@@ -59,6 +59,7 @@ class AssetPage extends AbstractTemplateDocument
             ->addText($assetReader->model->id->label)
             ->addText($assetReader->model->name->label)
             ->addText($assetReader->model->description->label)
+            ->addText($assetReader->model->caption->label)
             ->addText($assetReader->model->fileExtension->label)
             ->addText('Collection')
             ->addText('Path');
@@ -71,6 +72,7 @@ class AssetPage extends AbstractTemplateDocument
                 ->addText($assetRow->id)
                 ->addText($bold->getBoldText($assetRow->name))
                 ->addText($assetRow->description)
+                ->addText($assetRow->caption)
                 ->addText($assetRow->fileExtension->fileExtension);
 
             $ul = new UnorderedList($row);

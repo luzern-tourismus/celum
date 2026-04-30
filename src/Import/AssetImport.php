@@ -41,47 +41,10 @@ class AssetImport extends AbstractCelumImport
     {
 
         $assetId = $item['id'];
-
-        /*$previewUrl = null;
-        $hasPreview = false;
-        if (isset($item['currentVersion']['previewUrls'])) {
-            $previewUrl = $item['currentVersion']['previewUrls']['LARGE'];
-            $hasPreview = true;
-        }
-
-        if (isset($item['currentVersion']['previewUrls']['VIDEO'])) {
-            $previewUrl = $item['currentVersion']['previewUrls']['VIDEO'];
-            $hasPreview = true;
-        }*/
-
+        $asset = $item['name'];
         $fileExtension = $item['currentVersion']['fileExtension'];
 
-        /*if ($this->downloadAsset) {
-
-            /*$filename = (new CelumAssetPath())
-                ->addPath($assetId . '.' . $fileExtension)
-                ->getFullFilename();
-
-
-            if (!(new File($filename))->fileExists()) {
-
-                $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetId . '&downloadFormatId=1';
-
-                $response = (new CelumWebRequest())->getUrl($url);
-
-                $data = (new JsonReader())->fromText($response->html)->getData();
-                $downloadUrl = $data['url'];
-
-                (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
-
-            }
-
-        }*/
-
-
         $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
-
-        $asset = $item['name'];
 
         $request = new CelumWebRequest();
         $response = $request->getUrl($url);
@@ -100,6 +63,8 @@ class AssetImport extends AbstractCelumImport
         $jsonData = $jsonReader->getData();
 
         $description = '';
+        $caption = '';
+        $creator='';
 
         if (isset($jsonData['informationFieldValueSets'])) {
             foreach ($jsonData['informationFieldValueSets'] as $fieldValue) {
@@ -109,16 +74,34 @@ class AssetImport extends AbstractCelumImport
                     $name = $field['field']['name'];
 
                     if ($name === 'description') {
-
                         if (isset($field['value'])) {
-
                             if (isset($field['value']['de'])) {
                                 $description = $field['value']['de'];
                             }
-
                         }
-
                     }
+
+                    if ($name === 'caption') {
+                        if (isset($field['value'])) {
+                            if (isset($field['value']['de'])) {
+                                $caption = $field['value']['de'];
+                            }
+                        }
+                    }
+
+                    if ($name === 'creator') {
+                        if (isset($field['value'])) {
+                            if (isset($field['value']['de'])) {
+                                $creator = $field['value']['de'];
+                            }
+                        }
+                    }
+
+
+
+
+
+
 
                 }
 
@@ -131,9 +114,9 @@ class AssetImport extends AbstractCelumImport
         $data->id = $assetId;
         $data->name = $asset;
         $data->description = $description;
+        $data->caption = $caption;
+        $data->creator = $creator;
         $data->fileExtensionId = $this->fileExtensionDirectory->getId($fileExtension);
-        /*$data->hasPreviewUrl = $hasPreview;
-        $data->previewUrl = $previewUrl;*/
         $data->save();
 
         foreach ($item['parentIds'] as $parentId) {

@@ -83,6 +83,22 @@
                     "variable_name": "hasPreviewUrl",
                     "allow_null": false,
                     "is_deleted": true
+                },
+                {
+                    "type": "large_text",
+                    "label": "Caption",
+                    "field_name": "caption",
+                    "variable_name": "caption",
+                    "allow_null": true,
+                    "is_deleted": false
+                },
+                {
+                    "type": "large_text",
+                    "label": "Creator",
+                    "field_name": "creator",
+                    "variable_name": "creator",
+                    "allow_null": true,
+                    "is_deleted": false
                 }
             ],
             "index": [
