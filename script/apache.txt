@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+        ...
+    <Directory "directory/of/your/.htaccess">
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+

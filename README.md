@@ -1,5 +1,12 @@
 # Celum SDK
 
+### Installation
+```
+composer config repositories.celum vcs https://github.com/luzern-tourismus/celum
+composer require luzerntourismus/celum
+```
+
+
 
 ## Linux Installation (mit sudo)
 ```
