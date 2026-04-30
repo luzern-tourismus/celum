@@ -28,6 +28,16 @@ class AssetDataReader extends AssetReader
 
     }
 
+    public function filterByFileExtension($fileExtension)
+    {
+
+        if ((new ValueCheck())->hasValue($fileExtension)) {
+            $this->filter->orEqual($this->model->fileExtension->fileExtension, $fileExtension);
+        }
+
+        return $this;
+
+    }
 
 
     public function filterByFileExtensionId($fileExtensionId)
