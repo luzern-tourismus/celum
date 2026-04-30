@@ -40,9 +40,9 @@ abstract class AbstractCelumImport extends AbstractBase
 
             $request = new CelumWebRequest();
 
-            $stoppwatch = new Stopwatch('Download Json');
+            //$stoppwatch = new Stopwatch('Download Json');
             $response = $request->getUrl($url);
-            $stoppwatch->stopAndPrintOutput();
+            //$stoppwatch->stopAndPrintOutput();
 
             $filename = (new TmpPath())
                 ->addPath('celum_' . $this->endpoint . '_' . AbstractCelumImport::$count . '.json')
@@ -65,15 +65,15 @@ abstract class AbstractCelumImport extends AbstractBase
                 $hasNext = $jsonData['hasNext'];
             }
 
-            (new Debug())->write('Total: ' . $total);
+            //(new Debug())->write('Total: ' . $total);
 
             $count = 0;
             foreach ($jsonData['content'] as $item) {
                 $this->onItem($item);
-                $count++;
+                //$count++;
             }
 
-            (new Debug())->write('Count: ' . $count);
+            //(new Debug())->write('Count: ' . $count);
 
             $this->page++;
 

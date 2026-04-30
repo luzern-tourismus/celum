@@ -61,8 +61,7 @@ class AssetPage extends AbstractTemplateDocument
             ->addText($assetReader->model->description->label)
             ->addText($assetReader->model->fileExtension->label)
             ->addText('Collection')
-            ->addText('Path')
-            ->addEmpty();
+            ->addText('Path');
 
         foreach ($assetReader->getData() as $assetRow) {
 
@@ -81,7 +80,6 @@ class AssetPage extends AbstractTemplateDocument
             $assetCollectionReader->model->collection->loadCollectionType();
             $assetCollectionReader->filter->andEqual($assetCollectionReader->model->assetId, $assetRow->id);
             foreach ($assetCollectionReader->getData() as $assetCollectionRow) {
-                //$ul->addText($assetCollectionRow->collectionId . ' ' . $assetCollectionRow->collection->collection);
                 $ul->addText($assetCollectionRow->collection->collectionType->collectionType . ': ' . $assetCollectionRow->collection->collection);
             }
 
@@ -103,18 +101,16 @@ class AssetPage extends AbstractTemplateDocument
                 $segmentReader->addOrder($segmentReader->model->itemOrder);
                 foreach ($segmentReader->getData() as $segmentRow) {
                     $textList->addValue($segmentRow->collection->collection);
-                    //$text .= $segmentRow->collection->collection . ' --> ';
                 }
 
                 $ul->addText($text . $textList->getTextWithSeperator(' -> '));
 
             }
 
-            $row->addHyperlink($assetRow->previewUrl, 'Preview', true);
-
         }
 
-
         return parent::getContent();
+
     }
+
 }

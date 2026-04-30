@@ -12,7 +12,6 @@ use LuzernTourismus\Celum\WebRequest\CelumWebRequest;
 use Nemundo\Core\File\File;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
-use Nemundo\Core\Time\Stopwatch;
 use Nemundo\Project\Path\TmpPath;
 
 
@@ -52,8 +51,6 @@ class AssetImport extends AbstractCelumImport
 
         $fileExtension = $item['currentVersion']['fileExtension'];
 
-        //if ($hasPreview) {
-
         $filename = (new CelumAssetPath())
             ->addPath($assetId . '.' . $fileExtension)
             ->getFullFilename();
@@ -63,27 +60,14 @@ class AssetImport extends AbstractCelumImport
 
             $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetId . '&downloadFormatId=1';
 
-            //$stoppwatch = new Stopwatch('Download Asset Json');
-            $response = (new \LuzernTourismus\Celum\WebRequest\CelumWebRequest())->getUrl($url);
-            //$stoppwatch->stopAndPrintOutput();
+            $response = (new CelumWebRequest())->getUrl($url);
 
-            $data = (new \Nemundo\Core\Json\Reader\JsonReader())->fromText($response->html)->getData();
+            $data = (new JsonReader())->fromText($response->html)->getData();
             $downloadUrl = $data['url'];
 
-            //(new \Nemundo\Core\Debug\Debug())->write($response);
-            //(new \Nemundo\Core\Debug\Debug())->write($downloadUrl);
-
-            //$downloadUrl = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetId . '&downloadFormatId=1';
-
-            //(new CelumWebRequest())->downloadUrl($previewUrl, $filename);
-            //$stoppwatch = new Stopwatch('Download Asset');
             (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
-            //$stoppwatch->stopAndPrintOutput();
 
         }
-
-
-        //}
 
 
         $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
@@ -118,9 +102,11 @@ class AssetImport extends AbstractCelumImport
                     if ($name === 'description') {
 
                         if (isset($field['value'])) {
+
                             if (isset($field['value']['de'])) {
                                 $description = $field['value']['de'];
                             }
+
                         }
 
                     }
@@ -128,6 +114,7 @@ class AssetImport extends AbstractCelumImport
                 }
 
             }
+
         }
 
         $data = new Asset();
@@ -158,13 +145,11 @@ class AssetImport extends AbstractCelumImport
             $data->collectionTypeId = $parentPath['collectionTypeId'];
             $assetCollectionPathId = $data->save();
 
-
             $itemOrder = 0;
 
             foreach ($parentPath['pathSegments'] as $segment) {
 
                 $data = new AssetCollectionPathSegment();
-                //$data->ignoreIfExists = true;
                 $data->assetCollectionPathId = $assetCollectionPathId;
                 $data->collectionId = $segment['collectionId'];
                 $data->itemOrder = $itemOrder;
