@@ -15,4 +15,12 @@ class CollectionDataReader extends CollectionReader
 
     }
 
+    public function orderByCollection()
+    {
+
+        $this->addOrder($this->model->collection);
+        return $this;
+
+    }
+
 }

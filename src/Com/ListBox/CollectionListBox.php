@@ -12,7 +12,7 @@ class CollectionListBox extends AdminListBox
 
         $this->label = 'Collection';
 
-        foreach ((new CollectionDataReader())->getData() as $collectionRow) {
+        foreach ((new CollectionDataReader())->orderByCollection()->getData() as $collectionRow) {
             $this->addItem($collectionRow->id, $collectionRow->collection);
         }
 
