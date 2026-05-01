@@ -31,6 +31,13 @@ class CollectionImport extends AbstractCelumImport
         $data->id = $item['id'];
         $data->collection = $item['name']['de'];
         $data->collectionTypeId = $item['typeId'];
+
+        if (isset($item['parentId'])) {
+            $data->parentId = $item['parentId'];
+        }
+        //parentId
+        //"parentId": 2,
+
         $data->save();
 
     }

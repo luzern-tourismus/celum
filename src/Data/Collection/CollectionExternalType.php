@@ -21,6 +21,16 @@ public $collectionTypeId;
 */
 public $collectionType;
 
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $parentId;
+
+/**
+* @var \LuzernTourismus\Celum\Data\Collection\CollectionExternalType
+*/
+public $parent;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = CollectionModel::class;
@@ -49,6 +59,13 @@ $this->collectionTypeId->aliasFieldName = $this->collectionTypeId->tableName ."_
 $this->collectionTypeId->label = "Collection Type";
 $this->addType($this->collectionTypeId);
 
+$this->parentId = new \Nemundo\Model\Type\Id\IdType();
+$this->parentId->fieldName = "parent";
+$this->parentId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->parentId->aliasFieldName = $this->parentId->tableName ."_".$this->parentId->fieldName;
+$this->parentId->label = "Parent";
+$this->addType($this->parentId);
+
 }
 public function loadCollectionType() {
 if ($this->collectionType == null) {
@@ -58,6 +75,17 @@ $this->collectionType->tableName = $this->parentFieldName . "_" . $this->externa
 $this->collectionType->aliasFieldName = $this->collectionType->tableName ."_".$this->collectionType->fieldName;
 $this->collectionType->label = "Collection Type";
 $this->addType($this->collectionType);
+}
+return $this;
+}
+public function loadParent() {
+if ($this->parent == null) {
+$this->parent = new \LuzernTourismus\Celum\Data\Collection\CollectionExternalType(null, $this->parentFieldName . "_parent");
+$this->parent->fieldName = "parent";
+$this->parent->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->parent->aliasFieldName = $this->parent->tableName ."_".$this->parent->fieldName;
+$this->parent->label = "Parent";
+$this->addType($this->parent);
 }
 return $this;
 }

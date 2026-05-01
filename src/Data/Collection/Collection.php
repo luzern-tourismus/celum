@@ -21,6 +21,11 @@ public $collection;
 */
 public $collectionTypeId;
 
+/**
+* @var string
+*/
+public $parentId;
+
 public function __construct() {
 parent::__construct();
 $this->model = new CollectionModel();
@@ -30,6 +35,7 @@ $id = $this->id;
 $this->typeValueList->setModelValue($this->model->id, $id);
 $this->typeValueList->setModelValue($this->model->collection, $this->collection);
 $this->typeValueList->setModelValue($this->model->collectionTypeId, $this->collectionTypeId);
+$this->typeValueList->setModelValue($this->model->parentId, $this->parentId);
 $id = parent::save();
 return $id;
 }

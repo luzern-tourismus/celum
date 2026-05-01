@@ -267,6 +267,15 @@
                     "allow_null": false,
                     "is_deleted": false,
                     "external_model_id": "1315e1c5-1901-4365-87bc-3859decc8245"
+                },
+                {
+                    "type": "external",
+                    "label": "Parent",
+                    "field_name": "parent",
+                    "variable_name": "parent",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "external_model_id": "eeb2e76d-4da4-4760-b6d9-e25a06cd2184"
                 }
             ],
             "index": []
