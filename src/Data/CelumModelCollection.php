@@ -10,6 +10,5 @@ $this->addModel(new \LuzernTourismus\Celum\Data\AssetCollectionPathSegment\Asset
 $this->addModel(new \LuzernTourismus\Celum\Data\Collection\CollectionModel());
 $this->addModel(new \LuzernTourismus\Celum\Data\CollectionType\CollectionTypeModel());
 $this->addModel(new \LuzernTourismus\Celum\Data\FileExtension\FileExtensionModel());
-$this->addModel(new \LuzernTourismus\Celum\Data\Ort\OrtModel());
 }
 }
