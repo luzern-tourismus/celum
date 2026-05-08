@@ -24,6 +24,7 @@ class CelumSite extends AbstractSite
         CelumSite::$site = $this;
 
         new AssetSite($this);
+        new FileExtensionSite($this);
         new CollectionSite($this);
 
     }
