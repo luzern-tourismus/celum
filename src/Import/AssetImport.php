@@ -9,10 +9,8 @@ use LuzernTourismus\Celum\Data\AssetCollectionPathSegment\AssetCollectionPathSeg
 use LuzernTourismus\Celum\Directory\FileExtensionDirectory;
 use LuzernTourismus\Celum\Path\CelumAssetPath;
 use LuzernTourismus\Celum\WebRequest\CelumWebRequest;
-use Nemundo\Core\File\File;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
-use Nemundo\Project\Path\TmpPath;
 
 
 class AssetImport extends AbstractCelumImport
@@ -49,8 +47,8 @@ class AssetImport extends AbstractCelumImport
         $request = new CelumWebRequest();
         $response = $request->getUrl($url);
 
-        $filename = (new TmpPath())
-            ->addPath('celum_asset_detail_' . $assetId . '.json')
+        $filename = (new CelumAssetPath())
+            ->addPath($assetId . '.json')
             ->getFullFilename();
 
         $file = new TextFileWriter($filename);
@@ -64,7 +62,7 @@ class AssetImport extends AbstractCelumImport
 
         $description = '';
         $caption = '';
-        $creator='';
+        $creator = '';
 
         if (isset($jsonData['informationFieldValueSets'])) {
             foreach ($jsonData['informationFieldValueSets'] as $fieldValue) {
@@ -96,11 +94,6 @@ class AssetImport extends AbstractCelumImport
                             }
                         }
                     }
-
-
-
-
-
 
 
                 }

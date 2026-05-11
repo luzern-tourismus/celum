@@ -21,7 +21,7 @@ class AssetDownload extends AbstractBase
             ->addPath($assetRow->id . '.' . $assetRow->fileExtension->fileExtension)
             ->getFullFilename();
 
-        $filenameJson = (new CelumAssetPath())
+        /*$filenameJson = (new CelumAssetPath())
             ->addPath($assetRow->id . '.json')
             ->getFullFilename();
 
@@ -34,7 +34,7 @@ class AssetDownload extends AbstractBase
                 }
 
             }
-        }
+        }*/
 
 
         if (!(new File($filename))->fileExists()) {
@@ -43,9 +43,9 @@ class AssetDownload extends AbstractBase
 
             $response = (new CelumWebRequest())->getUrl($url);
 
-            $file = new TextFileWriter($filenameJson);
+            /*$file = new TextFileWriter($filenameJson);
             $file->addLine($response->html);
-            $file->writeFile();
+            $file->writeFile();*/
 
 
             $data = (new JsonReader())->fromText($response->html)->getData();
