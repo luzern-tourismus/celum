@@ -25,14 +25,15 @@ class AssetDownload extends AbstractBase
             ->addPath($assetRow->id . '.json')
             ->getFullFilename();
 
+        if ((new File($filename))->fileExists()) {
+            if ((new File($filename))->getFileSize() === 0) {
+                (new File($filename))->deleteFile();
 
-        if ((new File($filename))->getFileSize() === 0) {
-            (new File($filename))->deleteFile();
+                if ((new File($filenameJson))->fileExists()) {
+                    (new File($filenameJson))->deleteFile();
+                }
 
-            if ((new File($filenameJson))->fileExists()) {
-                (new File($filenameJson))->deleteFile();
             }
-
         }
 
 
@@ -50,7 +51,7 @@ class AssetDownload extends AbstractBase
             $data = (new JsonReader())->fromText($response->html)->getData();
             $downloadUrl = $data['url'];
 
-            $stoppwatch = new Stopwatch('Download Asset Id '. $assetRow->id);
+            $stoppwatch = new Stopwatch('Download Asset Id ' . $assetRow->id);
             (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
             $stoppwatch->stopAndPrintOutput();
 
