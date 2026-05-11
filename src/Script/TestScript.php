@@ -18,7 +18,7 @@ class TestScript extends AbstractConsoleScript
     public function run()
     {
 
-        $assetId =6108;
+        $assetId =2774;
         $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
 
         $request = new CelumWebRequest();

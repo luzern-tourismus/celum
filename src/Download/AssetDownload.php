@@ -19,6 +19,20 @@ class AssetDownload extends AbstractBase
             ->addPath($assetRow->id . '.' . $assetRow->fileExtension->fileExtension)
             ->getFullFilename();
 
+        $filenameJson = (new CelumAssetPath())
+            ->addPath($assetRow->id . '.json')
+            ->getFullFilename();
+
+
+        if ((new File($filename))->getFileSize() === 0) {
+            (new File($filename))->deleteFile();
+
+            if ((new File($filenameJson))->fileExists()) {
+                (new File($filenameJson))->deleteFile();
+            }
+
+        }
+
 
         if (!(new File($filename))->fileExists()) {
 
