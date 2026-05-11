@@ -17,6 +17,18 @@ class AssetDataReader extends AssetReader
     }
 
 
+    public function filterById($id)
+    {
+
+        if ((new ValueCheck())->hasValue($id)) {
+            $this->filter->andEqual($this->model->id, $id);
+        }
+
+        return $this;
+
+    }
+
+
     public function filterByName($name)
     {
 

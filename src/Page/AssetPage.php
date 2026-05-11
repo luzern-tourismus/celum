@@ -9,9 +9,11 @@ use LuzernTourismus\Celum\Data\AssetCollection\AssetCollectionReader;
 use LuzernTourismus\Celum\Data\AssetCollectionPath\AssetCollectionPathReader;
 use LuzernTourismus\Celum\Data\AssetCollectionPathSegment\AssetCollectionPathSegmentReader;
 use LuzernTourismus\Celum\Reader\Asset\AssetDataReader;
+use Nemundo\Admin\Com\Button\AdminSubmitButton;
 use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\Layout\AdminFlexboxLayout;
 use Nemundo\Admin\Com\ListBox\AdminSearchTextBox;
+use Nemundo\Admin\Com\ListBox\AdminTextBox;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
@@ -19,6 +21,7 @@ use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Core\Text\BoldText;
+use Nemundo\Html\Form\Button\SubmitButton;
 use Nemundo\Html\Paragraph\Paragraph;
 
 class AssetPage extends AbstractTemplateDocument
@@ -31,6 +34,11 @@ class AssetPage extends AbstractTemplateDocument
 
         $search = new AdminSearchForm($layout);
 
+        $id = new AdminTextBox($search);
+        $id->label = 'Id';
+        $id->searchMode = true;
+
+
         $name = new AdminSearchTextBox($search);
         $name->label = 'Name';
         $name->searchMode = true;
@@ -38,6 +46,8 @@ class AssetPage extends AbstractTemplateDocument
         $fileExtension = new FileExtensionListBox($search);
         $fileExtension->searchMode = true;
         $fileExtension->submitOnChange = true;
+
+        new AdminSubmitButton($search);
 
         $bold = new BoldText();
         $bold->addKeyword($name->getValue());
@@ -48,6 +58,7 @@ class AssetPage extends AbstractTemplateDocument
 
         $assetReader = new AssetDataReader();
         $assetReader
+            ->filterById($id->getValue())
             ->filterByFileExtensionId($fileExtension->getValue())
             ->filterByName($name->getValue());
 
