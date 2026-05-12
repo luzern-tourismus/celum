@@ -1,5 +1,5 @@
 apt update
-apt upgrade
+apt upgrade -y
 apt install -y mariadb-server mariadb-client
 apt install -y php
 apt install -y php-dom php-gd php-mysql
