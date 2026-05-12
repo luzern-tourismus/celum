@@ -17,11 +17,6 @@ class AssetImport extends AbstractCelumImport
 {
 
     /**
-     * @var bool
-     */
-    //public $downloadAsset = false;
-
-    /**
      * @var FileExtensionDirectory
      */
     private $fileExtensionDirectory;
@@ -94,7 +89,6 @@ class AssetImport extends AbstractCelumImport
                             }
                         }
                     }
-
 
                 }
 

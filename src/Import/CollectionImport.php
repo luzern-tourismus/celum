@@ -8,18 +8,11 @@ class CollectionImport extends AbstractCelumImport
 {
 
 
-    //public $parentId;
-
-
     protected function loadImport()
     {
 
         $this->endpoint = 'collections';
         $this->parameter = 'recursive=true';
-
-        /*if ($this->parentId !== null) {
-            $this->parameter .= '&parentId=' . $this->parentId;
-        }*/
 
     }
 
@@ -35,8 +28,6 @@ class CollectionImport extends AbstractCelumImport
         if (isset($item['parentId'])) {
             $data->parentId = $item['parentId'];
         }
-        //parentId
-        //"parentId": 2,
 
         $data->save();
 
