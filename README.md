@@ -43,6 +43,7 @@ https://content.luzern.com/content-api/v1/swagger-ui/
 ```
 celum_user=
 celum_password=
+celum_asset_path=
 ```
 
 

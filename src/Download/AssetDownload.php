@@ -8,6 +8,7 @@ use LuzernTourismus\Celum\WebRequest\CelumWebRequest;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\File\File;
 use Nemundo\Core\Json\Reader\JsonReader;
+use Nemundo\Core\TextFile\Writer\TextFileWriter;
 use Nemundo\Core\Time\Stopwatch;
 
 class AssetDownload extends AbstractBase
@@ -20,11 +21,11 @@ class AssetDownload extends AbstractBase
             ->addPath($assetRow->id . '.' . $assetRow->fileExtension->fileExtension)
             ->getFullFilename();
 
-        /*$filenameJson = (new CelumAssetPath())
+        $filenameJson = (new CelumAssetPath())
             ->addPath($assetRow->id . '.json')
             ->getFullFilename();
 
-        if ((new File($filename))->fileExists()) {
+        /*if ((new File($filename))->fileExists()) {
             if ((new File($filename))->getFileSize() === 0) {
                 (new File($filename))->deleteFile();
 
@@ -47,6 +48,8 @@ class AssetDownload extends AbstractBase
             /*$file = new TextFileWriter($filenameJson);
             $file->addLine($response->html);
             $file->writeFile();*/
+
+
 
 
             $data = (new JsonReader())->fromText($response->html)->getData();

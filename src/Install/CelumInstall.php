@@ -4,6 +4,7 @@ namespace LuzernTourismus\Celum\Install;
 
 use LuzernTourismus\Celum\Application\CelumApplication;
 use LuzernTourismus\Celum\Data\CelumModelCollection;
+use LuzernTourismus\Celum\Path\CelumAssetPath;
 use LuzernTourismus\Celum\Script\AssetDownloadScript;
 use LuzernTourismus\Celum\Script\AssetImportScript;
 use LuzernTourismus\Celum\Script\CleanScript;
@@ -35,6 +36,8 @@ class CelumInstall extends AbstractInstall
 
         (new UsergroupSetup())
             ->addUsergroup(new CelumUsergroup());
+
+        (new CelumAssetPath())->createPath();
 
     }
 }
