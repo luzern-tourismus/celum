@@ -22,7 +22,7 @@ class AssetDownloadScript extends AbstractConsoleScript
         (new PhpConfig())->setUnlimitedMemoryLimit();
 
         $assetReader = new AssetDataReader();
-        $assetReader->limit = 10;
+        //$assetReader->limit = 10;
 
         foreach ($assetReader->getData() as $assetRow) {
 
