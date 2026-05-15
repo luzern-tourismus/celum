@@ -16,7 +16,9 @@ class CelumAssetPath extends AbstractPath  // ProjectPath
         //$this->addPath('celum_asset');
 
         $path = (new ProjectConfigReader())->getValue('celum_asset_path');
-        $this->addPath($path);
+        $this
+            ->addPath($path)
+        ->addPath('asset');
 
     }
 
