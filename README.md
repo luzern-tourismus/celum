@@ -55,7 +55,7 @@ sudo nohup php /var/www/bin/cmd.php celum-asset-import &
 
 ### Download Asset
 ```
-sh -c "nohup php /var/www/bin/cmd.php celum-asset-download > /var/log/download_asset.log 2>&1  &"
+sh -c "nohup php /var/www/bin/cmd.php celum-asset-download > /var/log/download_asset_download.log 2>&1  &"
 ```
 
 

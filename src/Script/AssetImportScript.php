@@ -2,6 +2,7 @@
 
 namespace LuzernTourismus\Celum\Script;
 
+use LuzernTourismus\Celum\Path\CelumAssetPath;
 use Nemundo\App\Script\Type\AbstractConsoleScript;
 use LuzernTourismus\Celum\Import\AssetImport;
 
@@ -15,6 +16,7 @@ class AssetImportScript extends AbstractConsoleScript
     public function run()
     {
 
+        (new CelumAssetPath())->createPath();
         (new AssetImport())->import();
 
     }

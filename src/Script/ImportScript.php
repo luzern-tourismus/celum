@@ -21,6 +21,5 @@ class ImportScript extends AbstractConsoleScript
         (new CollectionImport())->import();
         (new AssetImport())->import();
 
-
     }
 }
