@@ -40,9 +40,3 @@ composer update
 ```
 
 
--------------
-
-
-git clone https://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@github.com/luzern-tourismus/dam-migration.git .
-sudo mysql -e "CREATE USER 'dammigration'@'localhost' IDENTIFIED BY '123456';GRANT ALL PRIVILEGES ON dammigration.* TO 'dammigration'@'localhost';FLUSH PRIVILEGES;"
-
