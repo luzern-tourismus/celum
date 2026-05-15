@@ -16,6 +16,13 @@ apt install php7.0-zip
 
 
 
+
+
+sudo apt install -y php-fpm
+apt install certbot
+
+ php8.5-mysql php8.5-xml php8.5-zip php8.5-curl php8.5-mbstring
+
 # Enable modules
 sudo a2enmod rewrite
 
