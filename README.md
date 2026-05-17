@@ -51,6 +51,11 @@ celum_asset_path=
 ```
 sudo nohup php /var/www/bin/cmd.php celum-asset-import &
 ```
+```
+sh -c "nohup php /var/www/bin/cmd.php celum-asset-import > /var/log/celum_asset_import.log 2>&1  &"
+```
+
+
 
 
 ### Download Asset

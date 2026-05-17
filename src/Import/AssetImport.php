@@ -28,6 +28,8 @@ class AssetImport extends AbstractCelumImport
         $this->endpoint = 'assets';
         $this->fileExtensionDirectory = new FileExtensionDirectory();
 
+        (new CelumJsonPath())->createPath();
+
     }
 
 
