@@ -16,7 +16,6 @@ class AssetImportScript extends AbstractConsoleScript
     public function run()
     {
 
-        //(new CelumAssetPath())->createPath();
         (new AssetImport())->import();
 
     }

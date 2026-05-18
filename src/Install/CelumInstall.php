@@ -10,6 +10,7 @@ use LuzernTourismus\Celum\Script\AssetImportScript;
 use LuzernTourismus\Celum\Script\CleanScript;
 use LuzernTourismus\Celum\Script\CollectionImportScript;
 use LuzernTourismus\Celum\Script\ImportScript;
+use LuzernTourismus\Celum\Script\JsonDownloadScript;
 use LuzernTourismus\Celum\Script\TestScript;
 use LuzernTourismus\Celum\Usergroup\CelumUsergroup;
 use Nemundo\App\Application\Type\Install\AbstractInstall;
@@ -30,6 +31,7 @@ class CelumInstall extends AbstractInstall
             ->addScript(new TestScript())
             ->addScript(new CleanScript())
             ->addScript(new CollectionImportScript())
+            ->addScript(new JsonDownloadScript())
             ->addScript(new AssetImportScript())
             ->addScript(new AssetDownloadScript())
             ->addScript(new ImportScript());

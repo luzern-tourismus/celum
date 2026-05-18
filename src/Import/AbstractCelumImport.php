@@ -5,6 +5,7 @@ namespace LuzernTourismus\Celum\Import;
 use LuzernTourismus\Celum\WebRequest\CelumWebRequest;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\File\File;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
 use Nemundo\Core\Time\Stopwatch;
@@ -48,32 +49,35 @@ abstract class AbstractCelumImport extends AbstractBase
                 ->addPath('celum_' . $this->endpoint . '_' . AbstractCelumImport::$count . '.json')
                 ->getFullFilename();
 
-            AbstractCelumImport::$count++;
+            //if ((new File($filename))->fileNotExists()) {
 
-            $file = new TextFileWriter($filename);
-            $file->overwriteExistingFile = true;
-            $file->addLine($response->html);
-            $file->writeFile();
+                AbstractCelumImport::$count++;
 
-            $jsonReader = new JsonReader();
-            $jsonReader->fromText($response->html);
-            $jsonData = $jsonReader->getData();
+                $file = new TextFileWriter($filename);
+                $file->overwriteExistingFile = true;
+                $file->addLine($response->html);
+                $file->writeFile();
 
-            $total = $jsonData['totalElements'];
-            $hasNext = false;
-            if (isset($jsonData['hasNext'])) {
-                $hasNext = $jsonData['hasNext'];
-            }
+                $jsonReader = new JsonReader();
+                $jsonReader->fromText($response->html);
+                $jsonData = $jsonReader->getData();
 
-            //(new Debug())->write('Total: ' . $total);
+                //$total = $jsonData['totalElements'];
+                $hasNext = false;
+                if (isset($jsonData['hasNext'])) {
+                    $hasNext = $jsonData['hasNext'];
+                }
 
-            $count = 0;
-            foreach ($jsonData['content'] as $item) {
-                $this->onItem($item);
-                //$count++;
-            }
+                //(new Debug())->write('Total: ' . $total);
 
-            //(new Debug())->write('Count: ' . $count);
+                //$count = 0;
+                foreach ($jsonData['content'] as $item) {
+                    $this->onItem($item);
+                    //$count++;
+                }
+
+            //}
+            //(n//ew Debug())->write('Count: ' . $count);
 
             $this->page++;
 
