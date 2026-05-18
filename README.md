@@ -59,6 +59,7 @@ sh -c "nohup php /var/www/bin/cmd.php celum-asset-import > /var/log/celum_asset_
 ### Download Json
 ```
 php /var/www/bin/cmd.php celum-json-download
+sh -c "nohup php /var/www/bin/cmd.php celum-json-download > /var/log/download_json_download.log 2>&1  &"
 ```
 
 

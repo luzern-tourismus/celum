@@ -28,7 +28,7 @@ class JsonDownloadScript extends AbstractConsoleScript
         foreach ($assetReader->getData() as $assetRow) {
 
             $n++;
-            (new Debug())->write($n);
+            //(new Debug())->write($n);
 
             (new JsonDownload())->downloadAsset($assetRow);
 
