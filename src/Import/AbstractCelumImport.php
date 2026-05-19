@@ -24,7 +24,7 @@ abstract class AbstractCelumImport extends AbstractBase
 
     abstract protected function loadImport();
 
-    abstract protected function onItem($item);
+    abstract protected function onItem($json);
 
     public function import()
     {

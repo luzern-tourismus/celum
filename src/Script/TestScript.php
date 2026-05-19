@@ -3,6 +3,7 @@
 namespace LuzernTourismus\Celum\Script;
 
 
+use LuzernTourismus\Celum\Import\AssetImport;
 use LuzernTourismus\Celum\Import\CollectionTypeImport;
 use LuzernTourismus\Celum\WebRequest\CelumWebRequest;
 use Nemundo\App\Script\Type\AbstractConsoleScript;
@@ -18,13 +19,16 @@ class TestScript extends AbstractConsoleScript
     public function run()
     {
 
-        $assetId =2774;
+        (new AssetImport())->import();
+
+
+        /*$assetId =2774;
         $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
 
         $request = new CelumWebRequest();
         $response = $request->getUrl($url);
 
-        (new Debug())->write($response);
+        (new Debug())->write($response);*/
 
     }
 }

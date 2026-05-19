@@ -16,17 +16,17 @@ class CollectionImport extends AbstractCelumImport
 
     }
 
-    protected function onItem($item)
+    protected function onItem($json)
     {
 
         $data = new Collection();
         $data->updateOnDuplicate = true;
-        $data->id = $item['id'];
-        $data->collection = $item['name']['de'];
-        $data->collectionTypeId = $item['typeId'];
+        $data->id = $json['id'];
+        $data->collection = $json['name']['de'];
+        $data->collectionTypeId = $json['typeId'];
 
-        if (isset($item['parentId'])) {
-            $data->parentId = $item['parentId'];
+        if (isset($json['parentId'])) {
+            $data->parentId = $json['parentId'];
         }
 
         $data->save();

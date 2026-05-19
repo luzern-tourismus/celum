@@ -1,22 +1,19 @@
 <?php
 
-namespace LuzernTourismus\Celum\Import;
+namespace LuzernTourismus\Celum\Download;
 
 use LuzernTourismus\Celum\Data\Asset\Asset;
 use LuzernTourismus\Celum\Data\AssetCollection\AssetCollection;
 use LuzernTourismus\Celum\Data\AssetCollectionPath\AssetCollectionPath;
 use LuzernTourismus\Celum\Data\AssetCollectionPathSegment\AssetCollectionPathSegment;
 use LuzernTourismus\Celum\Directory\FileExtensionDirectory;
-use LuzernTourismus\Celum\Download\AssetBuilder;
-use LuzernTourismus\Celum\Download\AssetDownload;
-use LuzernTourismus\Celum\Download\JsonDownload;
 use LuzernTourismus\Celum\Path\CelumJsonPath;
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Core\TextFile\Reader\TextFileReader;
 
-
-class AssetImport extends AbstractCelumImport
+class AssetBuilder extends AbstractBase
 {
 
     /**
@@ -24,24 +21,18 @@ class AssetImport extends AbstractCelumImport
      */
     private $fileExtensionDirectory;
 
-    protected function loadImport()
+    public function build($assetId)
     {
 
-        $this->endpoint = 'assets';
+
         $this->fileExtensionDirectory = new FileExtensionDirectory();
 
         (new CelumJsonPath())->createPath();
 
-    }
 
+        //$assetId = $json['id'];
 
-    protected function onItem($json)
-    {
-
-        $assetId = $json['id'];
-        (new AssetBuilder())->build($assetId);
-
-        (new Debug())->write($assetId);
+        //(new Debug())->write($assetId);
 
         /*$filename = (new CelumJsonPath())
             ->addPath($assetId . '.json')
@@ -50,14 +41,10 @@ class AssetImport extends AbstractCelumImport
         if ((new File($filename))->fileNotExists()) {
         }*/
 
+        $filename = (new JsonDownload())->downloadJson($assetId);
 
 
-        /*$filename = (new JsonDownload())->downloadJson($assetId);
-
-
-        $asset = $json['name'];
-        $fileExtension = $json['currentVersion']['fileExtension'];
-        //$url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
+         //$url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
 
         /*$request = new CelumWebRequest();
         $response = $request->getUrl($url);
@@ -73,10 +60,12 @@ class AssetImport extends AbstractCelumImport
         $jsonData = $jsonReader->getData();*/
 
 
-        /*$jsonReader = new JsonReader();
+        $jsonReader = new JsonReader();
         $jsonReader->fromText((new TextFileReader($filename))->getText());
         $jsonData = $jsonReader->getData();
 
+        $asset = $jsonData['name'];
+        $fileExtension = $jsonData['currentVersion']['fileExtension'];
 
         $description = '';
         $caption = '';
@@ -129,7 +118,7 @@ class AssetImport extends AbstractCelumImport
         $data->fileExtensionId = $this->fileExtensionDirectory->getId($fileExtension);
         $data->save();
 
-        foreach ($json['parentIds'] as $parentId) {
+        foreach ($jsonData['parentIds'] as $parentId) {
 
             $data = new AssetCollection();
             $data->ignoreIfExists = true;
@@ -140,7 +129,7 @@ class AssetImport extends AbstractCelumImport
         }
 
 
-        foreach ($json['parentPaths'] as $parentPath) {
+        foreach ($jsonData['parentPaths'] as $parentPath) {
 
             $data = new AssetCollectionPath();
             $data->assetId = $assetId;
@@ -161,9 +150,7 @@ class AssetImport extends AbstractCelumImport
 
             }
 
-        }*/
-
-        //}
+        }
 
     }
 

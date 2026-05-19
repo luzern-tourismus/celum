@@ -30,7 +30,7 @@ class JsonDownloadScript extends AbstractConsoleScript
             $n++;
             //(new Debug())->write($n);
 
-            (new JsonDownload())->downloadAsset($assetRow);
+            (new JsonDownload())->downloadJson($assetRow);
 
         }
 

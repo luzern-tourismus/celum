@@ -15,16 +15,16 @@ use Nemundo\Core\Time\Stopwatch;
 class JsonDownload extends AbstractBase
 {
 
-    public function downloadAsset(AssetRow $assetRow)
+    public function downloadJson($assetId)
     {
 
         $filename = (new CelumJsonPath())
-            ->addPath($assetRow->id . '.json')
+            ->addPath($assetId . '.json')
             ->getFullFilename();
 
         if ((new File($filename))->fileNotExists()) {
 
-            $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetRow->id;
+            $url = 'https://content.luzern.com/content-api/v1/assets/' . $assetId;
 
             $request = new CelumWebRequest();
             $response = $request->getUrl($url);
