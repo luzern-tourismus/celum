@@ -2,9 +2,9 @@
 
 namespace LuzernTourismus\Celum\Reader\Asset;
 
-use LuzernTourismus\Celum\Data\Asset\AssetReader;
+use LuzernTourismus\Celum\Data\Asset\AssetPaginationReader;
 
-class AssetDataReader extends AssetReader
+class AssetDataPaginationReader extends AssetPaginationReader
 {
 
     use AssetDataTrait;

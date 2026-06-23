@@ -8,15 +8,18 @@ use LuzernTourismus\Celum\Data\Asset\AssetCount;
 use LuzernTourismus\Celum\Data\AssetCollection\AssetCollectionReader;
 use LuzernTourismus\Celum\Data\AssetCollectionPath\AssetCollectionPathReader;
 use LuzernTourismus\Celum\Data\AssetCollectionPathSegment\AssetCollectionPathSegmentReader;
+use LuzernTourismus\Celum\Reader\Asset\AssetDataPaginationReader;
 use LuzernTourismus\Celum\Reader\Asset\AssetDataReader;
 use Nemundo\Admin\Com\Button\AdminSubmitButton;
 use Nemundo\Admin\Com\Form\AdminSearchForm;
 use Nemundo\Admin\Com\Layout\AdminFlexboxLayout;
 use Nemundo\Admin\Com\ListBox\AdminSearchTextBox;
 use Nemundo\Admin\Com\ListBox\AdminTextBox;
+use Nemundo\Admin\Com\Pagination\AdminPagination;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Admin\Com\Table\Row\AdminTableRow;
+use Nemundo\Admin\Parameter\PageParameter;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\Template\AbstractTemplateDocument;
 use Nemundo\Core\Directory\TextDirectory;
@@ -56,15 +59,16 @@ class AssetPage extends AbstractTemplateDocument
 
         $table = new AdminTable($layout);
 
-        $assetReader = new AssetDataReader();
+        $assetReader = new AssetDataPaginationReader();
+        $assetReader->currentPage = (new PageParameter())->getValue();
         $assetReader
             ->filterById($id->getValue())
             ->filterByFileExtensionId($fileExtension->getValue())
             ->filterByName($name->getValue());
 
-        $assetReader->limit = 100;
+        $assetReader->paginationLimit = 100;
 
-        $p->content = (new AssetCount())->getFormatCount() . ' assets found';
+        $p->content = $assetReader->getFormatTotalCount() . ' assets found';
 
         (new AdminTableHeader($table))
             ->addText($assetReader->model->id->label)
@@ -121,6 +125,9 @@ class AssetPage extends AbstractTemplateDocument
             }
 
         }
+
+        $pagination = new AdminPagination($layout);
+        $pagination->paginationReader = $assetReader;
 
         return parent::getContent();
 
