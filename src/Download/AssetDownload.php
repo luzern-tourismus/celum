@@ -24,16 +24,16 @@ class AssetDownload extends AbstractBase
 
             $url = 'https://content.luzern.com/content-api/v1/assets/download?assetIds=' . $assetRow->id . '&downloadFormatId=1';
 
-            $stoppwatch = new Stopwatch('Download Json Id ' . $assetRow->id);
+            //$stoppwatch = new Stopwatch('Download Json Id ' . $assetRow->id);
             $response = (new CelumWebRequest())->getUrl($url);
-            $stoppwatch->stopAndPrintOutput();
+            //$stoppwatch->stopAndPrintOutput();
 
             $data = (new JsonReader())->fromText($response->html)->getData();
             $downloadUrl = $data['url'];
 
-            $stoppwatch = new Stopwatch('Download Asset Id ' . $assetRow->id);
+            //$stoppwatch = new Stopwatch('Download Asset Id ' . $assetRow->id);
             (new CelumWebRequest())->downloadUrl($downloadUrl, $filename);
-            $stoppwatch->stopAndPrintOutput();
+            //$stoppwatch->stopAndPrintOutput();
 
         }
 
